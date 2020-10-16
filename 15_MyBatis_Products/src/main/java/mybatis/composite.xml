@@ -7,7 +7,6 @@
 		select * from orders where mid=#{id} order by oid asc
 	</select>
 	<select id="showDetail" resultType="mall.cart.ShoppingInfo">
-
 		select p.num pnum, p.name pname, od.qty, p.price, od.qty *p.price amount
 		from orderdetails od inner join products p on od.pnum = p.num and
 		od.oid=#{oid} order by od.odid desc

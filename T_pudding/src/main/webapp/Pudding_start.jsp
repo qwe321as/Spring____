@@ -3,4 +3,4 @@
 <%
 String viewPage = request.getContextPath()+"/Main.pd";
 response.sendRedirect(viewPage);
-%>
+%>	

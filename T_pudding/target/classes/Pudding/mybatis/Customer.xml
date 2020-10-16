@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Login.model.Customer">
+	
+	<insert id="InsertData">
+		insert into customer(customerno,customer_name,customer_id,customer_passwd,customer_email,customer_hpnumber) 
+		values(customer_seq.nextval,#{customer_name},#{customer_id},#{customer_passwd},#{customer_email},#{customer_hpnumber})
+	</insert>
+
+	
+	<select id="GetData" resultType="MyCustomer">
+		select * from customer 
+		where customer_id = #{customer_id} 
+	</select>
+	
+	<select id="idcheck" resultType="int">
+      SELECT COUNT(*) FROM customer
+      WHERE
+          customer_id = #{customer_id}
+	</select>
+	
+	
+	
+	<select id="ListData" resultType="MyCustomer">
+		select * from customer  
+		order by num
+	</select>
+	
+	<select id="getOneData" resultType="MyCustomer">
+		select * from customer 
+		where customer_name = #{customer_name}
+	</select>
+	
+	<select id="getOneId" resultType="MyCustomer">
+		select * from customer 
+		where customer_id = #{customer_id}
+	</select>
+	
+	<select id="GetTotalCount" resultType="int">
+		select count(*) from customer
+		<if test="name=='keyword'">
+			where customer_name = ${#keyword}
+		</if>
+	</select>
+	
+	<select id="GetDataList" resultType="MyCustomer">
+		select * from customer
+		where customer_name = ${#keyword}
+	</select>
+	
+
+	<select id="deleteData" >
+		delete from customer
+		where customerno = #{customerno}
+	</select>
+</mapper>
+
+
