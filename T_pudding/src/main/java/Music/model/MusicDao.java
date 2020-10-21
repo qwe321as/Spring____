@@ -15,9 +15,8 @@ public class MusicDao {
 	
 	private String namespace = "Music.model.Music";
 	
-	public int update(Music music) {
-		int cnt= sqlsessiontemplate.update(namespace+".updatedata",music);
-		return cnt;
+	public void update(Music music) {
+		sqlsessiontemplate.update(namespace+".updatedata",music);
 	}
 	
 	public void insertData(Music music) {
@@ -28,6 +27,13 @@ public class MusicDao {
 	public Music selectOne(int mno) {
 		Music music = new Music();
 		music = sqlsessiontemplate.selectOne(namespace+".selectOne", mno);
+		return music;
+	}
+	public Music getmusicdj(String music_title) {
+		Music music = new Music();
+		System.out.println(music_title);
+		music = sqlsessiontemplate.selectOne(namespace+".hehehehe", music_title);
+		System.out.println(music.getMusic_date());
 		return music;
 	}
 	public void deleteData(int mno) {
@@ -68,5 +74,48 @@ public class MusicDao {
 		Music music = new Music();
 		music = sqlsessiontemplate.selectOne(namespace+".GetOneData",mno);
 		return music;
+	}
+
+	public void recountplus(int mno) {
+		
+		sqlsessiontemplate.update(namespace+".recountPlus",mno);
+	}
+
+
+	public void heartPlus(int musicheart, int mno) {
+		Music music=new Music();
+		music.setMno(mno);
+		music.setMusic_heart(musicheart);
+		 sqlsessiontemplate.update(namespace+".heartPlus",music);
+		
+	}
+
+
+	public List<Music> getheartlist() {
+		
+		List<Music> heartlist = new ArrayList<Music>();
+	heartlist =	sqlsessiontemplate.selectList(namespace+".heartList");
+		
+		return heartlist;
+	}
+
+	public List<Music> getrecountlist() {		
+		List<Music> recountlist = new ArrayList<Music>();
+		recountlist =	sqlsessiontemplate.selectList(namespace+".recountlist");
+		
+		return recountlist;
+	}
+	
+	
+	public List<Music> getDataHeartList() {
+		List<Music> lists = new ArrayList<Music>();
+		lists = sqlsessiontemplate.selectList(namespace+".getDataHeartList");
+		return lists;
+	}
+	
+	public List<Music> getDataRecountList() {
+		List<Music> lists = new ArrayList<Music>();
+		lists = sqlsessiontemplate.selectList(namespace+".getDataRecountList");
+		return lists;
 	}
 }

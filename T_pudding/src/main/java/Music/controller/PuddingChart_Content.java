@@ -2,8 +2,10 @@ package Music.controller;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -22,6 +24,8 @@ public class PuddingChart_Content {
 	
 	final String command = "pudding_chartcontent.ms";
 	final String getPage = "puddingChartContent";
+	final String heartcommand = "heart.ms";
+	final String mainheartcommand="mainheart.ms";
 
 	@Autowired
 	MusicDao dao;
@@ -32,11 +36,12 @@ public class PuddingChart_Content {
 	@RequestMapping(command)
 	public ModelAndView doAction(ModelAndView mav, @RequestParam("mno") int mno ) throws IOException {
 		Music music = dao.getOneData(mno);
+		dao.recountplus(mno);
 		String uploadtxt = servletcontext.getRealPath("/resources/txt/");
 		String lyics=null;
 		File file = new File(uploadtxt+music.getMusic_lyics());
 		FileReader filereader = new FileReader(file);
-		BufferedReader bufReader = new BufferedReader(filereader);
+		BufferedReader bufReader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
 		String line = "";
 		while((line = bufReader.readLine()) != null){
 			//System.out.println(line);
@@ -45,8 +50,27 @@ public class PuddingChart_Content {
 		bufReader.close();
 		filereader.close();
 		mav.addObject("lyics", lyics);
-		mav.addObject("music", music);
+		
+		mav.addObject("music",music);
 		mav.setViewName(getPage);
 		return mav;
+	}
+	
+	@RequestMapping(heartcommand)
+	public ModelAndView heartdoAction(ModelAndView mav, @RequestParam("musicheart") int musicheart,
+			@RequestParam("mno") int mno   ) {
+		 dao.heartPlus(musicheart, mno);
+		 mav.setViewName("redirect:/pudding_chartcontent.ms?mno="+mno);
+		 return mav;
+		
+	}
+	
+	@RequestMapping(mainheartcommand)
+	public ModelAndView mainheartdoAction(ModelAndView mav, @RequestParam("musicheart") int musicheart,
+			@RequestParam("mno") int mno) {
+		 dao.heartPlus(musicheart, mno);
+		mav.setViewName("redirect:/Main.ms?mno="+mno);
+		 return mav;
+		
 	}
 }

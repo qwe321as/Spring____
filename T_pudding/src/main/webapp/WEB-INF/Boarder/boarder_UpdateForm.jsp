@@ -53,12 +53,7 @@ padding: 0;
 					<div
 						class="signup-search-area d-flex align-items-center justify-content-end">
 						<div class="login_register_area d-flex">
-							<div class="login">
-								<a href="${path}/resources/register.html">Sing in</a>
-							</div>
-							<div class="register">
-								<a href="${path}/resources/register.html">Sing up</a>
-							</div>
+							
 						</div>
 						<!-- Search Button Area -->
 						<div class="search_button">
@@ -88,7 +83,7 @@ padding: 0;
 				<!-- Logo Area Start -->
 				<div class="col-12">
 					<div class="logo_area text-center">
-						<a href="${path}/resources/index.html" class="yummy-logo">PUDDING</a>
+						<a href="Main.ms" class="yummy-logo">PUDDING</a>
 					</div>
 				</div>
 			</div>
@@ -169,19 +164,18 @@ padding: 0;
 			<div class="row">
 				<div class="12u">
 					<section style="width: 1200px;">
-						<header>
-						<br>
-<h2>글수정</h2>
+  <header>
+  <br>
+                     <h2>Boarder Update</h2><br>
+                  <p class="subtitle">곡에대한 이야기를 나눌수 있습니다.</p>
+                  </header>
     <form:form commandName="bo" method="post" action="update.bd" >   <!--  form에쓸때는 onSubmit, submit에 쓸때는 onClick -->
     <table border="1" align="center" width="100%" cellspacing="0">
-    <tr>
-    <td colspan="2" align="right" ><a href="boarderList.bd">글목록</a></td>
-    </tr>
       
     <tr>
     <td width="20%" align="center" >이름
     <input type="hidden" name="boardno" value="${lists.boardno }"></td>
-    <td><input type="text" size="30" maxlength="10" name="board_writer" value="${lists.board_writer }"></td>
+    <td><input type="text" disabled="disabled" readonly="readonly" size="30" maxlength="10" name="board_writer" value="${lists.board_writer }"></td>
 	</tr>
     
     <tr>

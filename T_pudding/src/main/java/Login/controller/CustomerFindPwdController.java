@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import Login.model.Customer;
@@ -19,7 +20,7 @@ public class CustomerFindPwdController {
 
 	final String command = "/findpwd.me";
 	final String getPage = "FindPwdForm";
-	
+	final String gotoPage = "LoginForm";
 
 	@Autowired
 	CustomerDao customerDao;
@@ -30,41 +31,44 @@ public class CustomerFindPwdController {
 	}
 
 	@RequestMapping(value=command , method=RequestMethod.POST)
-	public ModelAndView doAction(Customer customer,HttpServletResponse response) throws IOException {
+	public ModelAndView doAction(Customer customer,HttpServletResponse response,
+								@RequestParam(value="customer_name",required=true) String customer_name,
+								@RequestParam(value="customer_id",required=true) String customer_id
+								) throws IOException {
 		
-		System.out.println(customer.getCustomer_id());
-		Customer bean = customerDao.getOneId(customer.getCustomer_id());
 		
-		ModelAndView mav = new ModelAndView();
+		Customer bean = customerDao.getPwdFind(customer_name,customer_id);
+		
+		ModelAndView mav = new ModelAndView(); 
 		PrintWriter pw = response.getWriter();
 		response.setContentType("text/html;charset=UTF-8");
 		
 		if(bean == null) {	
-			System.out.println("id°¡ ¾øÀ½");
+			System.out.println("id, name ë‘˜ë‹¤  ì—†ìŒ");
 			pw.println("<script type='text/javascript'>");
-			pw.println("alert('È¸¿øÁ¤º¸°¡ ¾ø½À´Ï´Ù.');");
+			pw.println("alert('íšŒì›ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤.');");
 			pw.println("</script>");
-			pw.flush();   //³»º¸³»±â
+			pw.flush();   //ë‚´ë³´ë‚´ê¸°
 			return new ModelAndView(getPage);
 		}																			
 		else {
 			System.out.println(bean.getCustomer_id());
 			System.out.println(bean.getCustomer_name());
 			
-			if(bean.getCustomer_name().equals(customer.getCustomer_name())){//¾ÆÀÌµğ¿Í ÀÌ¸§ÀÌ°°À¸¸é 
-				System.out.println("¾ÆÀÌµğ¿Í ÀÌ¸§ÀÌ °°À½");
+			if(bean.getCustomer_name().equals(customer_name)){//ì•„ì´ë””ì™€ ì´ë¦„ì´ê°™ìœ¼ë©´ 
+				System.out.println("ì´ë¦„ê³¼ ì•„ì´ë”” ê°™ìŒ");
 				pw.println("<script type='text/javascript'>");
-		        pw.println("alert('id:' + <%=bean.getCustomer_id())%>");
+				pw.println("alert('ë¹„ë°€ë²ˆí˜¸ëŠ” "+bean.getCustomer_passwd()+"ì…ë‹ˆë‹¤.')");
 		        pw.println("</script>");
-		        pw.flush();   //³»º¸³»±â
-				mav.setViewName(getPage);
+		        pw.flush();   //ë‚´ë³´ë‚´ê¸°
+				mav.setViewName(gotoPage);
 				return mav;
-			}else {																		//ÀÌ¸§ °°°í ¹øÈ£ Æ²¸² ¶È°°ÀÌ length·Î ¸¸µé °Í
-				System.out.println("¾ÆÀÌµğ°°°í ÀÌ¸§Æ²¸²");
+			}else {																		//ì´ë¦„ ê°™ê³  ë²ˆí˜¸ í‹€ë¦¼ ë˜‘ê°™ì´ lengthë¡œ ë§Œë“¤ ê²ƒ
+				System.out.println("ì•„ì´ë””ì™€ ì´ë¦„ì´ í‹€ë¦¼");
 				pw.println("<script type='text/javascript'>");
-				pw.println("alert('ÀÌ¸§ Æ²·È½À´Ï´Ù.');");
+				pw.println("alert('ì´ë¦„ í‹€ë ¸ìŠµë‹ˆë‹¤.');");
 				pw.println("</script>");
-				pw.flush();   //³»º¸³»±â
+				pw.flush();   //ë‚´ë³´ë‚´ê¸°
 				mav.setViewName(getPage);
 				return mav;
 			}

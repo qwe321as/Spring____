@@ -8,15 +8,15 @@ create table music(    --제일중요한 음악 테이블
   mno number primary key,
   music_title varchar2(50) not null,  --노래제목
   music_price number not null, -- 음악 가격
-  music_dj varchar2(50) , --카테
+  music_dj varchar2(3000) , --카테
   music_ganre varchar2(50) not null, 
   music_recount number,  --조회수
   music_image  varchar2(50), --음악앨범이미지
   music_song  varchar2(50), -- 음악mp3파일
   music_singer varchar2(50), 
+  music_heart number,
   music_lyics varchar2(50), --가사
-  music_date date,               --등록일,
-  music_heart number
+  music_date date               --등록일
 );
 
 select * from music;
@@ -49,8 +49,8 @@ create sequence Dj_seq start with 1 increment by 1 nocache;
 drop table Dj;
 create table Dj(             
   Dj_no number primary key,    
-  Dj_code varchar2(50) not null,
-  Dj_list varchar2(50) 
+  Dj_code varchar2(3000) not null,
+  Dj_list varchar2(3000) 
 );
 
 drop sequence cart_seq;
@@ -60,7 +60,6 @@ drop table cart;
 create table cart(
 cart_num number primary key,
 cart_user varchar2(50),
-cart_mno number,
 cart_album varchar2(50),
 cart_title varchar2(50),
 cart_singer varchar2(50),
@@ -68,6 +67,7 @@ cart_price number,
 cart_date date,
 cart_amount number default 0
 );
+
 
 drop sequence board_seq;
 create sequence board_seq start with 1 increment by 1 nocache;

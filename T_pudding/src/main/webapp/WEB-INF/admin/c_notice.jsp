@@ -84,7 +84,7 @@
 				<!-- Logo Area Start -->
 				<div class="col-12">
 					<div class="logo_area text-center">
-						<a href="${path}/resources/index.html" class="yummy-logo">PUDDING</a>
+						<a href="Main.ms" class="yummy-logo">PUDDING</a>
 					</div>
 				</div>
 			</div>
@@ -202,6 +202,8 @@
 		</tr> 
 	</c:forEach>
 						</table>
+						
+${pageInfo.pagingHtml}						
 				</div>
 			</div>
 		</div>

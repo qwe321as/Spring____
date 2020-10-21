@@ -84,7 +84,7 @@
 				<!-- Logo Area Start -->
 				<div class="col-12">
 					<div class="logo_area text-center">
-						<a href="${path}/resources/index.html" class="yummy-logo">PUDDING</a>
+						<a href="Main.ms" class="yummy-logo">PUDDING</a>
 					</div>
 				</div>
 			</div>
@@ -168,7 +168,7 @@
 						<header>
 						<br>
 						
-                     <h2>게시판</h2><br>
+                     <h2>Boarder</h2>
                   <p class="subtitle">곡에대한 이야기를 나눌수 있습니다.</p>
                   </header>
 
@@ -193,7 +193,7 @@
                      <c:forEach items="${lists }" var="bean">
                         <tr>
                            <td>${bean.boardno }</td>
-                           <td><a href="content.bd?boardno=${bean.boardno }">${bean.board_title }</a></td>
+                           <td><a href="content.bd?boardno=${bean.boardno }">${bean.board_title } (${bean.board_recontent })</a></td>
                            <td>${bean.board_writer }</td>
                            <td>${bean.board_date }</td>
                            <td>${bean.board_recount }</td>
@@ -201,6 +201,7 @@
                      </c:forEach>
                      <tr>
                         <td align="right" colspan="6">
+                        
                         <input type="button" value="게시글 등록" onclick="location.href='insert.bd'"></td>
                      </tr>
 

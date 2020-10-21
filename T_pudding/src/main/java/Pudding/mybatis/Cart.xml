@@ -7,7 +7,7 @@
 
 <insert id="cartinsert">
 	insert into cart 
-	values(cart_seq.nextval,'최지훈',#{music_image},#{music_title},#{music_singer},#{music_price},sysdate,default) </insert>
+	values(cart_seq.nextval,'최지훈',#{mno},#{music_image},#{music_title},#{music_singer},#{music_price},sysdate,default) </insert>
 
 <select id="cartSelect" resultType="MyCart">
 select * from cart 
@@ -16,6 +16,10 @@ select * from cart
 <delete id="deleteCart">
 delete from cart where cart_num=#{cart_num} 
 </delete>
+
+<delete id="deleteUsercart"> 
+delete from cart where cart_user=#{orderuser}
+ </delete>
 
 <select id="oneselectCart" resultType="MyCart">
 select * from cart where cart_num=#{cart_num}

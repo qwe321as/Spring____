@@ -23,6 +23,12 @@ update music set music_dj=#{djadd.djmusic} where music_title=#{djadd.djtitle}
 	<select id="GetOneData" resultType="MyMusic">
 		select * from music where mno =#{mno}
 	</select>
+	<select id="hehehehe" resultType="MyMusic">
+	select * from music where music_title=#{music_title}
+	</select>
+	<select id="getmusicdj" resultType="MyMusic">
+		select * from music where music_title=#{music_title}
+	</select>
 	
 		<delete id="delete">
 		delete from music where mno=#{mno}
@@ -32,8 +38,34 @@ update music set music_dj=#{djadd.djmusic} where music_title=#{djadd.djtitle}
 	</select>
 		<select id="selectDj" resultType="MyMusic">
 		select * from music where music_dj=#{dj}
+		
 	</select>
 	
+	<update id="recountPlus">
+		update music set music_recount = music_recount+1 where mno=#{mno}
+	</update>
+	
+	<update id="heartPlus">
+		update music set music_heart = #{music_heart}+1 where mno=#{mno}
+	
+	</update>
+	
+	
+	<select id="heartList" resultType="MyMusic">
+	select * from music order by music_heart desc
+	</select>
+	
+	<select id = "recountlist" resultType="MyMusic">
+	select * from music order by music_recount desc
+	</select>
+	
+	<select id="getDataHeartList" resultType="MyMusic">
+	select * from music order by music_heart desc 
+	</select>
+
+	<select id="getDataRecountList" resultType="MyMusic">
+	select * from music order by music_recount desc 
+	</select>
 </mapper>
 
 

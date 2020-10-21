@@ -6,8 +6,36 @@
 
   <mapper namespace="Order.model.OrderDto">
   
+  <insert id="insertorder">
+  	
+  	insert into orders
+  	values(orders_seq.nextval, #{cart_title},#{cart_singer}, #{cart_album},
+  	#{cart_price}, #{cart_mno}, #{cart_user},sysdate)
+  		
+  
+  </insert>
+  
+  <insert id="insertorderOne">
+  	insert into orders
+  	values(orders_seq.nextval, #{music_title}, #{music_singer}, #{music_image},
+  	#{music_price}, #{mno}, #{user},sysdate)
+  
+  </insert>
+  
+  <select id="getDataList" resultType="MyOrder">
+  	select * from orders
+  </select>
   
   
-  
-  
+  <select id="getDataSearchList" resultType="MyOrder">
+  	select * from orders
+  	<if test="whatColumn=='orders_title'">
+  		where orders_title like #{keyword}
+  	</if>
+    <if test="whatColumn=='orders_singer'">
+  		where orders_singer like #{keyword}
+  	</if>
+  </select>
   </mapper>
+  
+  

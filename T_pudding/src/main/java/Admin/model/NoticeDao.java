@@ -18,13 +18,19 @@ public class NoticeDao {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	
-	public int getTotalCount(Map<String,String> map){
-		int cnt = sqlSessionTemplate.selectOne(namespace+".GetTotalCount",map);
+	public int getTotalCount(){
+		int cnt = sqlSessionTemplate.selectOne(namespace+".GetTotalCount");
 		return cnt;
 	}
 	public int deleteData(int noticeno) {
 		int cnt = sqlSessionTemplate.delete(namespace+".deletedata",noticeno);
 		return cnt;
+	}
+	public List<Notice> getDataList(Paging pageInfo, Map<String, String> map){
+		List<Notice> lists = new ArrayList<Notice>();
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
+		lists = sqlSessionTemplate.selectList(namespace+".GetDataList",map,rowBounds);
+		return lists;
 	}
 	public List<Notice> getDataList(){
 		List<Notice> lists = new ArrayList<Notice>();

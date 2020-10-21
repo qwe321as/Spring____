@@ -28,5 +28,10 @@
        where recontentno=#{recontentno}
   </delete>
   
+  	<select id="GetpasswdData" resultType="MyRecontent">
+  	select * from recontent where recontent_passwd = #{recontent_passwd} and recontentno = #{recontentno}
+  	
+  	</select>
+  
   
   </mapper>

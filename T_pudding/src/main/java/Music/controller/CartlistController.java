@@ -35,12 +35,18 @@ public class CartlistController {
 		public ModelAndView doAction(HttpSession session
 							) {
 			int amount =0;
-							
+			ModelAndView mav = new ModelAndView();
+			if(session.getAttribute("loginInfo") == null) {
+				session.setAttribute("destination",  "redirect:/listcart.ms");
+				mav.setViewName("redirect:/loginForm.me");
+				return mav;
+			}				
 			List<Cart> cartlists = cartdao.getDataList();
 			Cart cart = new Cart();
-			ModelAndView mav = new ModelAndView();
-			amount += cart.getCart_price();
 			
+			for(int i=0;i<cartlists.size();i++) {
+			amount += cartlists.get(i).getCart_price();
+			}
 			mav.addObject("cartlists", cartlists);
 			session.setAttribute("amount", amount);
 			mav.setViewName(getPage);

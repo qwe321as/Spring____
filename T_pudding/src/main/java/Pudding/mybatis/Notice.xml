@@ -21,10 +21,14 @@ insert into notice values(notice_seq.nextval,#{notice_title},#{notice_content},0
 	<delete id="deletedata">
 	delete notice where noticeno=#{noticeno}
 	</delete>
-<update id="addCount">
-update notice set notice_recount=notice_recount+1 where noticeno=#{noticeno}
-</update>
+	<update id="addCount">
+	update notice set notice_recount=notice_recount+1 where noticeno=#{noticeno}
+	</update>
+	<select id="GetTotalCount" resultType="int">
+		select count(*) from notice
+	
 
+	</select>
 </mapper>
 
 

@@ -18,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import Boarder.model.Boarder;
 import Boarder.model.BoarderDao;
+import Boarder.model.Recontent;
+import Boarder.model.RecontentDao;
 import Login.model.Customer;
 
 @Controller
@@ -26,9 +28,15 @@ public class BoarderUpdateController {
 	final String command = "/update.bd";
 	final String getPage = "boarder_UpdateForm";
 	final String gotoPage = "redirect:/boarderList.bd";
+	final String recontentupdatecommand = "recontentupdate.bd";
+	final String getrecontentPage = "recontent_updateForm";
+	
 	
 	@Autowired    
 	BoarderDao boardDao;
+	
+	@Autowired
+	RecontentDao recontentdao;
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String doAction(@RequestParam("boardno")int boardno,
@@ -44,32 +52,76 @@ public class BoarderUpdateController {
 								HttpServletRequest request
 								,@RequestParam(value="boardno", required = false) int boardno
 								,HttpServletResponse response) throws IOException {
-		 PrintWriter pw = response.getWriter();                     //5-0. PrintWriter°´Ã¼¸¸µé±â (HttpServletResponse response)
+		 PrintWriter pw = response.getWriter();                     //5-0. PrintWriterï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ (HttpServletResponse response)
 	      response.setContentType("text/html;charset=UTF-8");   	
 		ModelAndView mav = new ModelAndView();
 		
 		Boarder dbboarderpasswd = boardDao.getData(board.getBoard_passwd(),boardno); 
 		
-		if(dbboarderpasswd == null) {
+		if(dbboarderpasswd==null) {
 	         
 	         pw.println("<script type='text/javascript'>");
-	         pw.println("alert('ºñ¹Ð¹øÈ£°¡ ¸ÂÁö¾Ê½À´Ï´Ù');");
+	         pw.println("alert('ë¹„ë°€ë²ˆí˜¸ê°€ ë§žì§€ì•ŠìŠµë‹ˆë‹¤');");
+	         pw.println("history.back()" );
 	         pw.println("</script>");
-	         pw.flush();   //³»º¸³»±â
-	         //return getPage;
-	         return new ModelAndView(getPage);
+	         pw.flush();   	         
 	      }
 		else {
 		 pw.println("<script type='text/javascript'>");	
-		 pw.println("alert('ºñ¹Ð¹øÈ£°¡ ¸Â½À´Ï´Ù');");
+		 pw.println("alert('ë¹„ë°€ë²ˆí˜¸ê°€ ë§žìŠµë‹ˆë‹¤');");				 
 		 pw.println("</script>");
 		 pw.flush();
-		
+		 boardDao.updateBoard(board);		 
 		}
-		 boardDao.updateBoard(board);
-			mav.setViewName(gotoPage);
-			return mav;
-		
+		return new ModelAndView("forward:/boarderList.bd");
 		
 	}
+	
+	@RequestMapping(value=recontentupdatecommand, method=RequestMethod.GET)
+	public String reupdatedoAction(@RequestParam("recontentno")int recontentno,
+			@RequestParam("boardno")int boardno,
+							Model model							
+			) {
+		Recontent recontent = recontentdao.OneRecontentList(recontentno);
+		model.addAttribute("recontent",recontent);	
+		model.addAttribute("boardno",boardno);
+		return getrecontentPage;
+	}
+	
+	@RequestMapping(value=recontentupdatecommand, method=RequestMethod.POST)
+	public ModelAndView reupdatedoAction(Recontent recontent,
+			@RequestParam("boardno")int boardno,
+			@RequestParam("recontentno")int recontentno	,HttpServletResponse response															
+			) throws IOException {
+		PrintWriter pw = response.getWriter();
+		response.setContentType("text/html;charset=UTF-8");
+		Recontent dbrecontentpasswd = recontentdao.getData(recontent.getRecontent_passwd(),recontentno); 
+		
+		ModelAndView mav = new ModelAndView();
+		System.out.println(recontent.getRecontent_boardno());
+		System.out.println(recontent.getRecontent_content());
+		System.out.println(recontent.getRecontent_passwd());
+		
+		
+		if(dbrecontentpasswd==null) {
+	         
+	         pw.println("<script type='text/javascript'>");
+	         pw.println("alert('ë¹„ë°€ë²ˆí˜¸ê°€ ë§žì§€ì•ŠìŠµë‹ˆë‹¤');");
+	         pw.println("history.back();" );
+	         pw.println("</script>");
+	         pw.flush();   	         	         
+	      }
+		
+		else {
+		 pw.println("<script type='text/javascript'>");	
+		 pw.println("alert('ë¹„ë°€ë²ˆí˜¸ê°€ ë§žìŠµë‹ˆë‹¤');");		 	 
+		 pw.println("</script>");
+		 pw.flush();
+		 recontentdao.Updaterecontent(recontent);
+		
+		}			
+		return new ModelAndView("forward:/boarderList.bd");		
+		
+	}
+	
 }

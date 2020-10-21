@@ -12,10 +12,9 @@
 		<typeAlias type="Login.model.Customer" alias="MyCustomer" />
 		<typeAlias type="Boarder.model.Boarder" alias="MyBoarder" />
 		<typeAlias type="Music.model.Djmusic" alias="MyDjmusic	" />
-<typeAlias type="Boarder.model.Recontent" alias="MyRecontent" />
-      <typeAlias type="Music.model.Cart" alias="MyCart" />
-      <typeAlias type="Order.model.OrderDto" alias="MyOrder" />
-
+		<typeAlias type="Boarder.model.Recontent" alias="MyRecontent" />
+		<typeAlias type="Music.model.Cart" alias="MyCart" />
+		<typeAlias type="Order.model.OrderDto" alias="MyOrder" />
 	</typeAliases>
 
 	<mappers>
@@ -28,9 +27,8 @@
 		<mapper resource="Pudding/mybatis/Boarder.xml" />
 		<mapper resource="Pudding/mybatis/Recontent.xml" />
 		<mapper resource="Pudding/mybatis/Djmusic.xml" />
-		      <mapper resource="Pudding/mybatis/Cart.xml" />
-      <mapper resource="Pudding/mybatis/Order.xml" />
-		
+		<mapper resource="Pudding/mybatis/Cart.xml" />
+		<mapper resource="Pudding/mybatis/Order.xml" />
 	</mappers>
 </configuration>
 
