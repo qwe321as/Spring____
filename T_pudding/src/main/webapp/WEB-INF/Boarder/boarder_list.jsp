@@ -2,13 +2,17 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="path" value="${pageContext.request.contextPath }" />
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
 
 <head>
+<style type="text/css">
+td {
+	text-align: center;
+	padding: 8px;
+	border-bottom: 1px solid #a0a0a0;
+}
+</style>
 <meta charset="UTF-8">
 <meta name="description" content="">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +21,7 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title -->
-<title>Yummy Blog - Food Blog Template</title>
+<title>푸딩메인</title>
 
 <!-- Favicon -->
 <link rel="icon" href="${path}/resources/img/core-img/favicon.ico">
@@ -29,13 +33,28 @@
 <link href="${path}/resources/css/responsive/responsive.css"
 	rel="stylesheet">
 
-</head>
-<body>
 
-</head>	<div id="preloader">
+<link href="${path}/resources/css/responsive/responsive.css"
+	rel="stylesheet">
+<link href="${path}/resources/assets/css/bootstrap.css" rel="stylesheet" />
+<link href="${path}/resources/assets/css/login-register.css"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="${path}/resources/http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<script src="${path}/resources/assets/js/jquery-1.10.2.js"
+	type="text/javascript"></script>
+<script src="${path}/resources/assets/js/bootstrap.js"
+	type="text/javascript"></script>
+<script src="${path}/resources/assets/js/login-register.js"
+	type="text/javascript"></script>
+
+</head>
+
+<body>
+	<!-- Preloader Start -->
+	<div id="preloader">
 		<div class="yummy-load"></div>
 	</div>
-
 	<!-- ****** Top Header Area Start ****** -->
 	<div class="top_header_area">
 		<div class="container">
@@ -48,14 +67,6 @@
 				<div class="col-7 col-sm-6">
 					<div
 						class="signup-search-area d-flex align-items-center justify-content-end">
-						<div class="login_register_area d-flex">
-							<div class="login">
-								<a href="${path}/resources/register.html">Sing in</a>
-							</div>
-							<div class="register">
-								<a href="${path}/resources/register.html">Sing up</a>
-							</div>
-						</div>
 						<!-- Search Button Area -->
 						<div class="search_button">
 							<a class="searchBtn" href="${path}/resources/#"><i
@@ -63,7 +74,7 @@
 						</div>
 						<!-- Search Form -->
 						<div class="search-hidden-form">
-							<form action="#" method="get">
+							<form action="" method="get">
 								<input type="search" name="search" id="search-anything"
 									placeholder="Search Anything..."> <input type="submit"
 									value="" class="d-none"> <span class="searchBtn"><i
@@ -102,37 +113,39 @@
 						<div class="collapse navbar-collapse justify-content-center"
 							id="yummyfood-nav">
 							<ul class="navbar-nav" id="yummy-nav">
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="${path}/resources/index.html">Home <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="${path}/resources/#" id="yummyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Pudding chart</a>
-                                    <div class="dropdown-menu" aria-labelledby="yummyDropdown">
-                                        <a class="dropdown-item" href="puddingmusic_chart.ms">좋아요순위</a>
-                                        <a class="dropdown-item" href="puddingmusic_chart.ms">인기도순위</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="${path}/resources/#">Pudding DJ</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Cart</a>
-                                </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="boarderList.bd">Boarder</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="${path}/resources/archive.html">QnA</a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link " href="CNotice.ad">Notice</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="loginForm.me">login</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="admin.ad">관리자페이지</a>
+								<li class="nav-item "><a class="nav-link" href="Main.ms">Home
+										<span class="sr-only">(current)</span>
+								</a></li>
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" href="${path}/resources/#"
+									id="yummyDropdown" role="button" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false"> Pudding chart</a>
+									<div class="dropdown-menu" aria-labelledby="yummyDropdown">
+										<a class="dropdown-item" href="puddingmusic_chart.ms">노래
+											목록</a> <a class="dropdown-item" href="puddingmusic_heartchart.ms">좋아요순위</a>
+										<a class="dropdown-item" href="puddingmusic_recountchart.ms">인기도순위</a>
+									</div></li>
+								<li class="nav-item"><a class="nav-link" href="c_Djlist.ms">Pudding
+										DJ</a></li>
+								<li class="nav-item "><a class="nav-link"
+									href="listcart.ms">Wishlist</a></li>
+								<li class="nav-item active"><a class="nav-link"
+									href="boarderList.bd">Boarder</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="C_QnA_list.ad">QnA</a></li>
+								<li class="nav-item"><a class="nav-link" href="CNotice.ad">Notice</a>
+									<c:if test="${loginInfo == null}">
+										<li class="nav-item"><a class="nav-link"
+											href="loginForm.me">login</a></li>
+									</c:if> <c:if test="${loginInfo != null}">
+										<li class="nav-item"><a class="nav-link"
+											href="logout.jsp">logout</a></li>
+									</c:if>
+
+
+									<li class="nav-item">
+                                    <a class="nav-link"
+									href="myPageList.me">MY PAGE</a>
                                 </li>
 							</ul>
 						</div>
@@ -141,10 +154,7 @@
 			</div>
 		</div>
 	</header>
-	<!-- ****** Header Area End ****** -->
-
-	<!-- ****** Breadcumb Area Start ****** -->
-	<div class="breadcumb-area" style="background-color: #ffd400;">
+<div class="breadcumb-area">
 		<div class="container h-100">
 			<div class="row h-100 align-items-center">
 				<div class="col-12">
@@ -164,51 +174,59 @@
 		<div id="main" class="container">
 			<div class="row">
 				<div class="12u">
-					<section style="width: 1200px;"></section>
+					<section style="width: 1200px;"/>
 						<header>
 						<br>
 						
-                     <h2>Boarder</h2>
-                  <p class="subtitle">곡에대한 이야기를 나눌수 있습니다.</p>
-                  </header>
+							<h2>Boarder</h2>
+						<p class="subtitle">곡에대한 이야기를 나눌수 있습니다.</p></header>
 
-                  <form action="boarderList.bd" method="post" style="text-align: right;padding-bottom: 20px;">
+        
+								          <form action="boarderList.bd" method="post"
+							style="text-align: right;padding-bottom: 20px;">
                      <select name="whatColumn">
                         <option value="all">전체검색
-                        <option value="board_title">제목으로 검색
-                        <option value="board_writer">작성자 검색
-                     </select> <input type="text" name="keyword" value="홍길동"> <input
-                        type="submit" value="검색">
+                        
+								<option value="board_title">제목으로 검색
+                        
+								<option value="board_writer">작성자 검색
+                     
+							</select> <input type="text" name="keyword" value="홍길동"> <input
+								type="submit" value="검색">
                   </form>
-                  <table border=1 style="width: 100%">
+                  <table style="width: 100%">
 
-                     <tr>
-                        <td style="text-align: center; width: 10%">번호</td>
+                     <tr  style="background: #eeecea">
+                        <td style="text-align: center; width: 5%">번호</td>
                         <td style="text-align: center; width: 30%">제목</td>
-                        <td style="text-align: center; width: 20%">작성자</td>
-                        <td style="text-align: center; width: 30% ">작성일</td>
-                        <td style="text-align: center; width: 10% ">조회</td>
+                        <td style="text-align: center; width: 10%">작성자</td>
+                        <td style="text-align: center; width: 10% ">작성일</td>
+                        <td style="text-align: center; width: 5% ">조회수</td>
                      </tr>
                      
                      <c:forEach items="${lists }" var="bean">
                         <tr>
                            <td>${bean.boardno }</td>
-                           <td><a href="content.bd?boardno=${bean.boardno }">${bean.board_title } (${bean.board_recontent })</a></td>
+                           <td style="text-align: left"><a href="content.bd?boardno=${bean.boardno }">${bean.board_title } (${bean.board_recontent })</a></td>
                            <td>${bean.board_writer }</td>
                            <td>${bean.board_date }</td>
                            <td>${bean.board_recount }</td>
                         </tr>
                      </c:forEach>
-                     <tr>
-                        <td align="right" colspan="6">
-                        
-                        <input type="button" value="게시글 등록" onclick="location.href='insert.bd'"></td>
+                     <tr >
+                     <td colspan="4" style="border-bottom: 0px">
+                        ${pageInfo.pagingHtml}
+                        </td><td style="text-align: right; border-bottom: 0px;" colspan="1">
+                        <input type="button" value="게시글 등록"
+									onclick="location.href='insert.bd'">
+								</td>
                      </tr>
 
 
                   </table>
+
 </body>
-${pageInfo.pagingHtml}
+
 </div>
 </div>
 </div>

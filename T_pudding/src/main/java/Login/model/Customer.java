@@ -7,19 +7,19 @@ public class Customer {
    
    
    private int customerno;
-   @NotEmpty(message = "ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”")
+   @NotEmpty(message = "ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä")
    private String customer_name;
    
-   @NotEmpty(message = "ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš” ")
+   @NotEmpty(message = "¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä ")
    private String customer_id;
    
-   @Length(min = 3, max = 10, message = "3ì~10ì ì‚¬ì´ì— ì…ë ¥í•˜ì„¸ìš”")
+   @Length(min = 3, max = 10, message = "3ÀÚ~10ÀÚ »çÀÌ¿¡ ÀÔ·ÂÇÏ¼¼¿ä")
    private String customer_passwd;
-   @NotEmpty(message="ì´ë©”ì¼ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.")
+   @NotEmpty(message="ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.")
    private String customer_email;
    
 
-@Length(min = 5, max = 11, message = "5~11ì ì‚¬ì´ì— ì…ë ¥í•˜ì„¸ìš”")
+@Length(min = 5, max = 11, message = "5~11ÀÚ »çÀÌ¿¡ ÀÔ·ÂÇÏ¼¼¿ä")
    private String customer_hpnumber;
    
    

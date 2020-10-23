@@ -3,10 +3,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath }" />
-<%@ include file="../common.jsp"%>
 <!DOCTYPE HTML>
 
 <head>
+<style type="text/css">
+td {
+	text-align: center;
+	padding: 8px;
+	border-bottom: 1px solid #a0a0a0;
+}
+</style>
 <meta charset="UTF-8">
 <meta name="description" content="">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,6 +30,10 @@
 <link href="${path}/resources/style.css" rel="stylesheet">
 
 <!-- Responsive CSS -->
+<link href="${path}/resources/css/responsive/responsive.css"
+	rel="stylesheet">
+
+
 <link href="${path}/resources/css/responsive/responsive.css"
 	rel="stylesheet">
 <link href="${path}/resources/assets/css/bootstrap.css" rel="stylesheet" />
@@ -57,14 +67,6 @@
 				<div class="col-7 col-sm-6">
 					<div
 						class="signup-search-area d-flex align-items-center justify-content-end">
-						<div class="login_register_area d-flex">
-							<div class="login">
-								<a href="loginForm.me">Sing in</a>
-							</div>
-							<div class="register">
-								<a href="${path}/resources/register.html">Sing up</a>
-							</div>
-						</div>
 						<!-- Search Button Area -->
 						<div class="search_button">
 							<a class="searchBtn" href="${path}/resources/#"><i
@@ -72,7 +74,7 @@
 						</div>
 						<!-- Search Form -->
 						<div class="search-hidden-form">
-							<form action="#" method="get">
+							<form action="" method="get">
 								<input type="search" name="search" id="search-anything"
 									placeholder="Search Anything..."> <input type="submit"
 									value="" class="d-none"> <span class="searchBtn"><i
@@ -93,7 +95,7 @@
 				<!-- Logo Area Start -->
 				<div class="col-12">
 					<div class="logo_area text-center">
-						<a href="${path}/resources/index.html" class="yummy-logo">PUDDING</a>
+						<a href="Main.ms" class="yummy-logo">PUDDING</a>
 					</div>
 				</div>
 			</div>
@@ -111,34 +113,36 @@
 						<div class="collapse navbar-collapse justify-content-center"
 							id="yummyfood-nav">
 							<ul class="navbar-nav" id="yummy-nav">
-								<li class="nav-item "><a class="nav-link"
-									href="${path}/resources/index.html">Home <span
-										class="sr-only">(current)</span></a></li>
-								<li class="nav-item dropdown"><a
+								<li class="nav-item "><a class="nav-link" href="Main.ms">Home
+										<span class="sr-only">(current)</span>
+								</a></li>
+								<li class="nav-item dropdown "><a
 									class="nav-link dropdown-toggle" href="${path}/resources/#"
 									id="yummyDropdown" role="button" data-toggle="dropdown"
 									aria-haspopup="true" aria-expanded="false"> Pudding chart</a>
 									<div class="dropdown-menu" aria-labelledby="yummyDropdown">
-										<a class="dropdown-item" href="puddingmusic_chart.ms">노래보기</a>
-										<a class="dropdown-item" href="puddingmusic_chart.ms">좋아요순위</a>
-										<a class="dropdown-item" href="puddingmusic_chart.ms">인기도순위</a>
+										<a class="dropdown-item" href="puddingmusic_chart.ms">노래
+											목록</a> <a class="dropdown-item" href="puddingmusic_heartchart.ms">좋아요순위</a>
+										<a class="dropdown-item" href="puddingmusic_recountchart.ms">인기도순위</a>
 									</div></li>
-								<li class="nav-item active"><a class="nav-link"
-									href="c_Djlist.ms">Pudding DJ</a></li>
-								<li class="nav-item"><a class="nav-link" class="nav-link"
-									href="javascript:void(0)" onclick="openLoginModal();">Cart</a>
-								</li>
+								<li class="nav-item active"><a class="nav-link" href="c_Djlist.ms">Pudding
+										DJ</a></li>
+								<li class="nav-item "><a class="nav-link"
+									href="listcart.ms">Wishlist</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="boarderList.bd">Boarder</a></li>
 								<li class="nav-item"><a class="nav-link"
-									href="${path}/resources/archive.html">QnA</a></li>
+									href="C_QnA_list.ad">QnA</a></li>
 								<li class="nav-item"><a class="nav-link" href="CNotice.ad">Notice</a>
-								</li>
-								<li class="nav-item"><a class="nav-link" href="#"
-									onclick="window.open('loginForm.me','window팝업','width=570, height=320, menubar=no, status=no, toolbar=no');">login</a>
-								</li>
-								<li class="nav-item"><a class="nav-link" href="admin.ad">관리자페이지</a>
-								</li>
+									<c:if test="${loginInfo == null}">
+										<li class="nav-item"><a class="nav-link"
+											href="loginForm.me">login</a></li>
+									</c:if> <c:if test="${loginInfo != null}">
+										<li class="nav-item"><a class="nav-link"
+											href="logout.jsp">logout</a></li>
+									</c:if>
+								<li class="nav-item"><a class="nav-link"
+									href="myPageList.me">MY PAGE</a></li>
 							</ul>
 						</div>
 					</nav>
@@ -146,16 +150,13 @@
 			</div>
 		</div>
 	</header>
-	<!-- ****** Header Area End ****** -->
-
-	<!-- ****** Breadcumb Area Start ****** -->
-	<div class="breadcumb-area" style="background-color: #ffd400;">
+	<div class="breadcumb-area">
 		<div class="container h-100">
 			<div class="row h-100 align-items-center">
 				<div class="col-12">
 					<div class="bradcumb-title text-center">
 						<h2>
-							<font style="text-decoration: underline;">DJ LIST</font>
+							<font style="text-decoration: underline;">Music List</font>
 						</h2>
 					</div>
 				</div>
@@ -223,20 +224,38 @@
 							<!-- Menu Area Start -->
 							<div class="collapse navbar-collapse justify-content-center"
 								id="yummyfood-footer-nav">
-								<ul class="navbar-nav" id="yummy-nav">
-									<li class="nav-item"><a class="nav-link" href="admin.ad">회원조회</a></li>
-									<li class="nav-item"><a class="nav-link"
-										href="addNotice.ad">공지사항 추가</a></li>
-									<li class="nav-item"><a class="nav-link" href="addQA.ad">QnA추가</a>
-									</li>
-									<li class="nav-item active"><a class="nav-link"
-										href="Djlist.ms">푸딩 DJ</a></li>
-									<li class="nav-item"><a class="nav-link"
-										href="addmusic.ms">노래추가</a></li>
-									<li class="nav-item"><a class="nav-link"
-										href="finebuylist.ad">구매내역조회</a></li>
-									<li class="nav-item"><a class="nav-link" href="Main.pd">회원메인</a></li>
-								</ul>
+			<ul class="navbar-nav" id="yummy-nav">
+								<li class="nav-item "><a class="nav-link" href="Main.ms">Home
+										<span class="sr-only">(current)</span>
+								</a></li>
+								<li class="nav-item dropdown "><a
+									class="nav-link dropdown-toggle" href="${path}/resources/#"
+									id="yummyDropdown" role="button" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false"> Pudding chart</a>
+									<div class="dropdown-menu" aria-labelledby="yummyDropdown">
+										<a class="dropdown-item" href="puddingmusic_chart.ms">노래
+											목록</a> <a class="dropdown-item" href="puddingmusic_heartchart.ms">좋아요순위</a>
+										<a class="dropdown-item" href="puddingmusic_recountchart.ms">인기도순위</a>
+									</div></li>
+								<li class="nav-item active"><a class="nav-link" href="c_Djlist.ms">Pudding
+										DJ</a></li>
+								<li class="nav-item "><a class="nav-link"
+									href="listcart.ms">Wishlist</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="boarderList.bd">Boarder</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="C_QnA_list.ad">QnA</a></li>
+								<li class="nav-item"><a class="nav-link" href="CNotice.ad">Notice</a>
+									<c:if test="${loginInfo == null}">
+										<li class="nav-item"><a class="nav-link"
+											href="loginForm.me">login</a></li>
+									</c:if> <c:if test="${loginInfo != null}">
+										<li class="nav-item"><a class="nav-link"
+											href="logout.jsp">logout</a></li>
+									</c:if>
+								<li class="nav-item"><a class="nav-link"
+									href="myPageList.me">MY PAGE</a></li>
+							</ul>
 							</div>
 						</nav>
 					</div>

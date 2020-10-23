@@ -44,6 +44,7 @@ public class C_DjChart_Content {
 			list.add(music);
 		}
 		System.out.println(list.get(0).getMusic_ganre());
+		mav.addObject("DJ",dj.getDj_code());
 		mav.addObject("list",list);
 		mav.setViewName(getPage);
 		return mav;

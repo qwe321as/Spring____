@@ -6,9 +6,9 @@
 <mapper namespace="Music.model.Cart">
 
 <insert id="cartinsert">
-	insert into cart 
-	values(cart_seq.nextval,'최지훈',#{mno},#{music_image},#{music_title},#{music_singer},#{music_price},sysdate,default) </insert>
-
+   insert into cart 
+   values(cart_seq.nextval,'최지훈',#{music_image},#{mno},#{music_title},#{music_singer},#{music_price},sysdate,default) 
+   </insert>
 <select id="cartSelect" resultType="MyCart">
 select * from cart 
 </select>

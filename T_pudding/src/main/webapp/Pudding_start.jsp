@@ -6,3 +6,4 @@ String viewPage = request.getContextPath()+"/Main.ms";
 
 response.sendRedirect(viewPage);
 %>
+

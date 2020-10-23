@@ -1,54 +1,95 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../common.jsp"%>
-<head>
-<style type="text/css">
-.container {
-	margin:80PX;
-}
-</style>
+<%@ include file="../common.jsp" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath }" />
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>로그인</title>
-<link href="${path}/resources/css/bootstrap/bootstrap.min.css"
-	rel="stylesheet">
-<link href="${path}/resources/css/other/font-awesome.css"
-	rel="stylesheet">
-<link rel="stylesheet" href="${path}/style.css" media="screen"
-	title="no title">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="${path}/resources/js/bootstrap/bootstrap.min.js"></script>
-<script defer src="/static/fontawesome/fontawesome-all.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V8</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/css/util.css">
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/css/main.css">
+<!--===============================================================================================-->
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="login-box well" style="width: 100%;">
-				<form accept-charset="UTF-8" role="form" method="post" style="width:100%"
-					action="findpwd.me">
-					<legend>비밀번호 찾기</legend>
-					<div class="input-group">
-						<span class="input-group-addon"><img
-							src="${path}/resources/img/icon/user.png" width="30" height="30"></span>
-						<input type="text" name="customer_name" placeholder="이름을 입력하세요" class="form-control" />
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form p-l-55 p-r-55 p-t-178" action="findpwd.me" method="post">
+					<span class="login100-form-title">
+					            <a href="Main.ms"> <img style="width: 30px; position:absolute; ; top: 20px; left:10px;" src="${path}/resources/img/icon/집.png" alt="집"> </a>
+						Fine Password
+					</span>
+
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter Name">
+						<input class="input100" type="text" name="customer_name" placeholder="Name">
+						<span class="focus-input100"></span>
 					</div>
-					<div class="input-group">
-						<span class="input-group-addon"><img
-							src="${path}/resources/img/icon/id.png" width="30" height="30"></span>
-						<input type="text" name="customer_id" placeholder="아이디를 입력하세요" class="form-control" />
+
+					<div class="wrap-input100 validate-input" data-validate ="Please enter ID">
+						<input class="input100" type="text" name="customer_id" placeholder="ID">
+						<span class="focus-input100"></span>
 					</div>
-					<input type = "submit" id="login-submit"	class="btn btn-default btn-block" value="아이디 찾기" />
-										<span class='text-center'><a href="loginForm.me"
-						class="text-sm">로그인 하기</a>/ <a href="findpwd.me" class="text-sm">아이디
-							찾기</a>/<a href="registerForm.me" class="text-sm"> 회원가입</a> </span>
+
+					<div class="text-right p-t-13 p-b-23">
+						 <a href="findid.me" class="text-sm">아이디 찾기</a>
+					</div>
+
+					<div class="container-login100-form-btn">
+							<input class="login100-form-btn" type="submit" value="Fine Password">
+					</div>
+
+					<div class="flex-col-c p-t-170 p-b-40">
+						<span class="txt1 p-b-9">
+							Would you like to Login?
+						</span>
+
+						<a href="loginForm.me" class="txt3">
+							Login now
+						</a>
+					</div>
 				</form>
 			</div>
-
 		</div>
 	</div>
+	
+	
+<!--===============================================================================================-->
+	<script type="text/javascript" src="${path}/resources/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="${path}/resources/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="${path}/resources/vendor/bootstrap/js/popper.js"></script>
+	<script type="text/javascript" src="${path}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="${path}/resources/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="${path}/resources/vendor/daterangepicker/moment.min.js"></script>
+	<script type="text/javascript" src="${path}/resources/vendor/daterangepicker/daterangepicker.js"></script>
+<!--==============================================================================================-->
+	<script type="text/javascript" src="${path}/resources/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="${path}/resources/js/main.js"></script>
+
 </body>
-
-
+</html>

@@ -45,28 +45,28 @@ public class CustomerFindIdController {
 		response.setContentType("text/html;charset=UTF-8");
 		
 		if(customerbean == null) {	
-			System.out.println("dbì— ì´ë¦„, íœ´ëŒ€í°ë²ˆí˜¸ ì—†ìŒ");
+			System.out.println("db¿¡ ÀÌ¸§, ÈŞ´ëÆù¹øÈ£ ¾øÀ½");
 			pw.println("<script type='text/javascript'>");
-			pw.println("alert('íšŒì›ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤.');");
+			pw.println("alert('È¸¿øÁ¤º¸°¡ ¾ø½À´Ï´Ù.');");
 			pw.println("</script>");
-			pw.flush();   //ë‚´ë³´ë‚´ê¸°
+			pw.flush();   //³»º¸³»±â
 			return new ModelAndView(getPage);
 		}																			
 		else {			
 			
-			if(customerbean.getCustomer_hpnumber().equals(customer_hpnumber)){//ì´ë¦„ê³¼  ë²ˆí˜¸ê°€ ê°™ìœ¼ë©´ 
-				System.out.println("ì´ë¦„ê³¼ íœ´ëŒ€í°ë²ˆí˜¸ ë‘˜ë‹¤ ê°™ìŒ");
+			if(customerbean.getCustomer_hpnumber().equals(customer_hpnumber)){//ÀÌ¸§°ú  ¹øÈ£°¡ °°À¸¸é 
+				System.out.println("ÀÌ¸§°ú ÈŞ´ëÆù¹øÈ£ µÑ´Ù °°À½");
 				pw.println("<script type='text/javascript'>");
-		        pw.println("alert('ì•„ì´ë””ëŠ” "+customerbean.getCustomer_id()+"ì…ë‹ˆë‹¤.')");
+		        pw.println("alert('¾ÆÀÌµğ´Â "+customerbean.getCustomer_id()+"ÀÔ´Ï´Ù.')");
 		        pw.println("</script>");
-		        pw.flush();   //ë‚´ë³´ë‚´ê¸°
+		        pw.flush();   //³»º¸³»±â
 		        return new ModelAndView(gotoPage);
-			}else {																		//ì´ë¦„ ê°™ê³  ë²ˆí˜¸ í‹€ë¦¼ ë˜‘ê°™ì´ lengthë¡œ ë§Œë“¤ ê²ƒ
-				System.out.println("ì´ë¦„ê³¼ íœ´ëŒ€í°ë²ˆí˜¸ ë‘˜ë‹¤ ì—†ìŒ");
+			}else {																		//ÀÌ¸§ °°°í ¹øÈ£ Æ²¸² ¶È°°ÀÌ length·Î ¸¸µé °Í
+				System.out.println("ÀÌ¸§°ú ÈŞ´ëÆù¹øÈ£ µÑ´Ù ¾øÀ½");
 				pw.println("<script type='text/javascript'>");
-				pw.println("alert('ë²ˆí˜¸ í‹€ë ¸ìŠµë‹ˆë‹¤.');");
+				pw.println("alert('¹øÈ£ Æ²·È½À´Ï´Ù.');");
 				pw.println("</script>");
-				pw.flush();   //ë‚´ë³´ë‚´ê¸°
+				pw.flush();   //³»º¸³»±â
 				mav.setViewName(getPage);
 				return mav;
 			}

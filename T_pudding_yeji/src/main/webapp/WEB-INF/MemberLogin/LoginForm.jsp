@@ -1,58 +1,102 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../common.jsp"%>
-<head>
-<style type="text/css">
-.container {
-	margin:80PX;
-}
-</style>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath }" />
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>로그인</title>
-<link href="${path}/resources/css/bootstrap/bootstrap.min.css"
-	rel="stylesheet">
-<link href="${path}/resources/css/other/font-awesome.css"
-	rel="stylesheet">
-<link rel="stylesheet" href="${path}/style.css" media="screen"
-	title="no title">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="${path}/resources/js/bootstrap/bootstrap.min.js"></script>
-<script defer src="/static/fontawesome/fontawesome-all.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V8</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png"  href="${path}/resources/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/css/util.css">
+	<link rel="stylesheet" type="text/css"  href="${path}/resources/css/main.css">
+<!--===============================================================================================-->
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="login-box well" style="width: 100%;">
-				<form accept-charset="UTF-8" role="form" method="post" style="width:100%"
-					action="loginForm.me">
-					<legend>로그인</legend>
-					<div class="input-group">
-						<span class="input-group-addon"><img
-							src="${path}/resources/img/icon/user.png" width="30" height="30"></span>
-						<input type="text" id="userid" name="customer_id"
-							placeholder="아이디를 입력하세요" class="form-control" />
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form p-l-55 p-r-55 p-t-178">
+					<span class="login100-form-title">
+						Sign In
+					</span>
+
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+						<input class="input100" type="text" name="username" placeholder="Username">
+						<span class="focus-input100"></span>
 					</div>
-					<div class="input-group">
-						<span class="input-group-addon"><img
-							src="${path}/resources/img/icon/자물쇠.png" width="30" height="30"></span>
-						<input type="password" id="password" name="customer_passwd"
-							placeholder="비밀번호를 입력하세요" class="form-control" />
+
+					<div class="wrap-input100 validate-input" data-validate = "Please enter password">
+						<input class="input100" type="password" name="pass" placeholder="Password">
+						<span class="focus-input100"></span>
 					</div>
-					<button class="btn btn-default btn-block" onclick="openChild" >
-					로그인
-					</button>
-					<span class='text-center'><a href="findid.me"
-						class="text-sm">아이디 찾기</a>/ <a href="findpwd.me" class="text-sm">비밀번호
-							찾기</a>/<a href="registerForm.me" class="text-sm"> 회원가입</a> </span>
+
+					<div class="text-right p-t-13 p-b-23">
+						<span class="txt1">
+							Forgot
+						</span>
+
+						<a  href="${path}/resources/#" class="txt2">
+							Username / Password?
+						</a>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Sign in
+						</button>
+					</div>
+
+					<div class="flex-col-c p-t-170 p-b-40">
+						<span class="txt1 p-b-9">
+							Don’t have an account?
+						</span>
+
+						<a  href="${path}/resources/#" class="txt3">
+							Sign up now
+						</a>
+					</div>
 				</form>
 			</div>
-
 		</div>
 	</div>
+	
+	
+<!--===============================================================================================-->
+	<script  href="${path}/resources/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script  href="${path}/resources/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script  href="${path}/resources/vendor/bootstrap/js/popper.js"></script>
+	<script  href="${path}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script  href="${path}/resources/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script  href="${path}/resources/vendor/daterangepicker/moment.min.js"></script>
+	<script  href="${path}/resources/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script  href="${path}/resources/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script  href="${path}/resources/js/main.js"></script>
+
 </body>
-
-
+</html>
